@@ -17,8 +17,8 @@
 # ---------------------------------------------------------------------------
 import numpy as np
 from numpy.linalg import norm
-from HelmholtzIntegrals2D import ComplexQuad
-from Geometry import Normal2D
+from Jupyter.HelmholtzIntegrals2D import ComplexQuad
+from Jupyter.Geometry import Normal2D
 
 class CircularIntegratorPi(object):
     """

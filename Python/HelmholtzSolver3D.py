@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with AcousticBEM.  If not, see <http://www.gnu.org/licenses/>.
 # ---------------------------------------------------------------------------
-from HelmholtzSolver import *
-from Geometry import *
+from Jupyter.HelmholtzSolver import *
+from Jupyter.Geometry import *
 
 bOptimized = True
 if bOptimized:

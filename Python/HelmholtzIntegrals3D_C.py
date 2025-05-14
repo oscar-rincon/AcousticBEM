@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with AcousticBEM.  If not, see <http://www.gnu.org/licenses/>.
 # ---------------------------------------------------------------------------
-from NativeInterface import *
+from Jupyter.NativeInterface import *
 import numpy as np
 
 

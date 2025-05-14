@@ -17,7 +17,7 @@
 # ---------------------------------------------------------------------------
 import numpy as np
 from numpy.linalg import norm
-from Geometry import *
+from Jupyter.Geometry import *
 
 def ComplexQuad(func, a, b, c):                                                                                           
     samples = np.array([[0.333333333333333, 0.333333333333333, 0.225000000000000],                                                 

@@ -51,7 +51,7 @@ class HelmholtzSolver(object):
         mu = mu or (1j / (k + 1))
         assert boundaryCondition.f.size == self.aElement.shape[0]
         A, B = self.computeBoundaryMatricesExterior(k, mu)
-        c = np.empty(self.aElement.shape[0], dtype=complex)
+        c = np.empty(self.aElement.shape[0], dtype=np.complex128)
         for i in range(self.aElement.shape[0]):
             # Note, the only difference between the interior solver and this
             # one is the sign of the assignment below.
@@ -67,7 +67,7 @@ class HelmholtzSolver(object):
         mu = mu or (1j / (k + 1))
         assert boundaryCondition.f.size == self.aElement.shape[0]
         A, B = self.computeBoundaryMatricesInterior(k, mu)
-        c = np.empty(self.aElement.shape[0], dtype=complex)
+        c = np.empty(self.aElement.shape[0], dtype=np.complex128)
         for i in range(self.aElement.shape[0]):
             # Note, the only difference between the interior solver and this
             # one is the sign of the assignment below.
@@ -86,8 +86,8 @@ class HelmholtzSolver(object):
         B = np.copy(Bi)
         c = np.copy(ci)
 
-        x = np.empty(c.size, dtype=np.complex)
-        y = np.empty(c.size, dtype=np.complex)
+        x = np.empty(c.size, dtype=np.complex128)
+        y = np.empty(c.size, dtype=np.complex128)
 
         gamma = np.linalg.norm(B, np.inf) / np.linalg.norm(A, np.inf)
         swapXY = np.empty(c.size, dtype=bool)
@@ -126,21 +126,21 @@ class HelmholtzSolver(object):
 
 
 def printInteriorSolution(solution, aPhiInterior):
-    print "\nSound pressure at the sample points\n"
-    print "index          Potential                    Pressure               Magnitude         Phase\n"
+    print("\nSound pressure at the sample points\n")
+    print("index          Potential                    Pressure               Magnitude         Phase\n")
     for i in range(aPhiInterior.size):
         pressure = soundPressure(solution.k, aPhiInterior[i], c=solution.parent.c, density=solution.parent.density)
         magnitude = SoundMagnitude(pressure)
         phase = SignalPhase(pressure)
-        print "{:5d}  {: 1.4e}+ {: 1.4e}i   {: 1.4e}+ {: 1.4e}i    {: 1.4e} dB       {:1.4f}".format( \
-            i+1, aPhiInterior[i].real, aPhiInterior[i].imag, pressure.real, pressure.imag, magnitude, phase)
+        print("{:5d}  {: 1.4e}+ {: 1.4e}i   {: 1.4e}+ {: 1.4e}i    {: 1.4e} dB       {:1.4f}".format( \
+            i+1, aPhiInterior[i].real, aPhiInterior[i].imag, pressure.real, pressure.imag, magnitude, phase))
 
 def printInteriorSolution(solution, aPhiInterior):
-    print "\nSound pressure at the sample points\n"
-    print "index          Potential                    Pressure               Magnitude         Phase\n"
+    print("\nSound pressure at the sample points\n")
+    print("index          Potential                    Pressure               Magnitude         Phase\n")
     for i in range(aPhiInterior.size):
         pressure = soundPressure(solution.k, aPhiInterior[i], c=solution.parent.c, density=solution.parent.density)
         magnitude = SoundMagnitude(pressure)
         phase = SignalPhase(pressure)
-        print "{:5d}  {: 1.4e}+ {: 1.4e}i   {: 1.4e}+ {: 1.4e}i    {: 1.4e} dB       {:1.4f}".format( \
-            i+1, aPhiInterior[i].real, aPhiInterior[i].imag, pressure.real, pressure.imag, magnitude, phase)
+        print("{:5d}  {: 1.4e}+ {: 1.4e}i   {: 1.4e}+ {: 1.4e}i    {: 1.4e} dB       {:1.4f}".format( \
+            i+1, aPhiInterior[i].real, aPhiInterior[i].imag, pressure.real, pressure.imag, magnitude, phase))
